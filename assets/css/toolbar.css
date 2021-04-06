@@ -1,0 +1,82 @@
+.toolbar-link a,
+a:hover {
+	color: #111111;
+	text-decoration: none;
+}
+
+.toolbar-link li:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.toolbar-link .active:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 80%;
+	background: rgb(255, 0, 179);
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.toolbar-link .active:hover:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.toolbar-link li:hover:after {
+	width: 80%;
+	background: rgb(255, 0, 179);
+}
+
+.nav-item.nav-link.active {
+	color: #111;
+}
+
+
+@media(max-width: 767px) {
+	.offcanvas-close {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		right: 30px;
+		top: 25px;
+		border: 1px solid #ddd;
+		border-radius: 50%;
+		font-size: 23px;
+		text-align: center;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+		cursor: pointer;
+	}
+
+	.offcanvas-content-brand {
+		position: absolute;
+		top: 50;
+		left: 20px;
+		cursor: pointer;
+	}
+
+	.offcanvas-content {
+		position: absolute;
+		top: 70px;
+		left: 20px;
+		cursor: pointer;
+	}
+
+	.offcanvas-content li:hover:after {
+		width: 100%;
+		background: rgb(255, 0, 179);
+	}
+}

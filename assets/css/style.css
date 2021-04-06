@@ -1,0 +1,412 @@
+@font-face {
+	font-family: cookie;
+	src: url("../font/Cookie-Regular.ttf");
+}
+
+h6 {
+	font-size: 16px;
+}
+
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	color: #111;
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 70px;
+}
+
+
+p {
+	font-size: 14px;
+	font-family: montserrat, sans-serif;
+	color: #666;
+	font-weight: 400;
+	line-height: 24px;
+	margin: 0 0 15px;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+}
+
+.categories {
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+.categories>.container-fluid {
+	padding-right: 5px;
+}
+
+.categories-item {
+	height: 314px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-left: 30px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.categories-item.categories-large-item {
+	height: 638px;
+	padding-left: 70px;
+}
+
+.set-bg {
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position: top center !important;
+}
+
+.categories-text {
+	max-width: 480px;
+}
+
+.categories-text h1 {
+	font-family: 'cookie', cursive;
+	color: #111;
+	margin-bottom: 5px;
+}
+
+.categories-large-item>.categories-text>p {
+	margin-bottom: 15px;
+}
+
+.categories-text p {
+	margin-bottom: 10px;
+}
+
+
+.categories-text a {
+	font-size: 14px;
+	color: #111;
+	text-transform: uppercase;
+	font-weight: 600;
+	position: relative;
+	padding: 0 0 3px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+.categories-text a:after {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 2px;
+	width: 100%;
+	background: #ca1515;
+	content: "";
+}
+
+.product {
+	padding-top: 60px;
+	padding-bottom: 50px;
+}
+
+.spad {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.section-title {
+	margin-bottom: 45px;
+
+}
+
+.section-title h4 {
+	color: #111;
+	font-weight: 600px;
+	text-transform: uppercase;
+	position: relative;
+	display: inline-block;
+}
+
+.section-title h4:after {
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+	height: 2px;
+	width: 70px;
+	background: #ca1515;
+	content: "";
+}
+
+.filter-controls {
+	text-align: right;
+	margin-bottom: 50px;
+}
+
+
+
+.filter-controls li {
+	font-size: 14px;
+	list-style: none;
+	display: inline-block;
+	color: #111;
+	margin-right: 10px;
+	position: relative;
+	cursor: pointer;
+}
+
+.filter-controls li::after {
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+	height: 2px;
+	width: 100%;
+	background: #ca1515;
+	content: "";
+	opacity: 0;
+}
+
+.filter-controls li.active::after {
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+	height: 2px;
+	width: 100%;
+	background: #ca1515;
+	content: "";
+	opacity: 1;
+}
+
+.product-item {
+	margin-bottom: 35px;
+}
+
+.product-item-pic {
+	height: 360px;
+	position: relative;
+	overflow: hidden;
+}
+
+.product-item-pic .label.new {
+	background: #36a300;
+}
+
+.product-item-pic .label.stockout {
+	background: #111;
+}
+
+.product-item-pic .label.sale {
+	background: #ca1515;
+}
+
+.product-item.sale .product-item-text .product-price {
+	color: #ca1515;
+}
+
+.product-item.sale .product-item-text .product-price span {
+	font-size: 14px;
+	color: #b1b0b0;
+	text-decoration: line-through;
+	margin-left: 4px;
+}
+
+.product-item-pic .label {
+	font-size: 12px;
+	color: #fff;
+	font-weight: 500;
+	display: inline-block;
+	padding: 2px 8px;
+	text-transform: uppercase;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+.product-hover {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 30px;
+	text-align: center;
+}
+
+.product-hover li {
+	list-style: none;
+	display: inline-block;
+	margin-right: 10px;
+	position: relative;
+	top: 100px;
+	opacity: 0;
+}
+
+.product-hover li:nth-child(1) {
+	-webkit-transition: all .4s ease .1s;
+	-o-transition: all .4s ease .1s;
+	transition: all .4s ease .1s;
+}
+
+.product-hover li:nth-child(2) {
+	-webkit-transition: all .4s ease .15s;
+	-o-transition: all .4s ease .15s;
+	transition: all .4s ease .15s;
+}
+
+.product-hover li:nth-child(3) {
+	-webkit-transition: all .4s ease .2s;
+	-o-transition: all .4s ease .2s;
+	transition: all .4s ease .2s;
+}
+
+.product-hover li:last-child {
+	margin-right: 0;
+}
+
+.product-hover li a span {
+	position: relative;
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+	-webkit-transition: all, .3s;
+	-o-transition: all, .3s;
+	transition: all, .3s;
+	display: inline-block;
+	top: 10px;
+}
+
+.icon_bag_alt:before {
+	content: "\e013";
+}
+
+.product-hover li a {
+	font-size: 18px;
+	color: #111;
+	display: block;
+	height: 45px;
+	width: 45px;
+	background: #fff;
+	line-height: 48px;
+	text-align: center;
+	border-radius: 50%;
+	-webkit-transition: all, .5s;
+	-o-transition: all, .5s;
+	transition: all, .5s;
+}
+
+.product-item-text h6 a {
+	font-size: 14px;
+	color: #111;
+}
+
+.product-item-text {
+	text-align: center;
+	padding-top: 22px;
+}
+
+.product-item-text .rating {
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+
+.product-item-text .rating svg {
+	font-size: 10px;
+	color: #e3c01c;
+	margin-right: 4px;
+}
+
+.product-item-text .product-price {
+	color: #111;
+	font-weight: 600;
+}
+
+.product-item:hover .product-hover li,
+.product-item.hover .product-hover li {
+	top: 0;
+	opacity: 1;
+
+}
+
+.product-hover li:hover a {
+	background: #ca1515
+}
+
+.product-hover li:hover a span {
+	color: #fff;
+	-webkit-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	transform: rotate(360deg)
+}
+
+.list-group li {
+	margin-right: 20px;
+}
+
+.quick-links li {
+	margin-bottom: 10px;
+}
+
+.footer-social a {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background: #e1e1e1;
+	font-size: 15px;
+	color: #111;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	margin-right: 6px;
+	margin-bottom: 5px;
+}
+
+.footer-newslatter form input {
+	height: 52px;
+	width: 100%;
+	border: 1px solid #e1e1e1;
+	border-radius: 50px;
+	padding-left: 30px;
+	font-size: 14px;
+	color: #666;
+}
+
+.footer-newslatter form {
+	position: relative;
+
+}
+
+.footer-newslatter form button {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+}
+
+.site-btn {
+	font-size: 14px;
+	color: #fff;
+	background: #ca1515;
+	font-weight: 600;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+	border-radius: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+	.filter-controls {
+		text-align: left;
+		margin-bottom: 40px;
+	}
+}
