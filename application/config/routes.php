@@ -74,3 +74,7 @@ $route['admin/delete-product'] = 'admin/ProductController/productDelete';
 $route['about-us'] = 'Home/aboutUs';
 $route['product'] = 'Home/product';
 $route['contact-us'] = 'Home/contactUs';
+$route['cart'] = 'Home/shopCart';
+$route['checkout'] = 'Home/checkout';
+$route['favourite'] = 'Home/favourite';
+$route['product-details'] = 'Home/productDetails';

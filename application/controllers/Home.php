@@ -31,4 +31,33 @@ class Home extends CI_Controller
 		];
 		$this->load->view('home/product', $data);
 	}
+	public function shopCart()
+	{
+		$data = [
+			"head" => "cart"
+		];
+		$this->load->view('home/shop-cart', $data);
+	}
+	public function checkout()
+	{
+		$data = [
+			"head" => "checkout"
+		];
+		$this->load->view('home/checkout', $data);
+	}
+	public function favourite()
+	{
+		$data = [
+			"head" => "favourite"
+		];
+		$this->load->view('home/favourite', $data);
+	}
+	public function productDetails()
+	{
+		$data = [
+			"head" => "productDetails"
+		];
+		$this->load->view('home/product-details', $data);
+	}
+	
 }

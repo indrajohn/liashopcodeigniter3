@@ -1957,7 +1957,8 @@ ol {
 }
 
 .nav-item .nav-link {
-	font-size: 18px;
+	font-family: "Cookie", sans-serif;
+	font-size: 24px;
 	color: #666666;
 	font-weight: 600;
 	border: none;
@@ -2912,6 +2913,32 @@ ol {
 	font-size: 14px;
 	color: #ca1515;
 	margin-right: 5px;
+}
+/*---------------------
+  Contact Us
+-----------------------*/
+.contact100-form {
+    width: 100%
+}
+.contact100-form-title {
+    display: block;
+    font-size: 30px;
+    color:#333;
+    line-height: 1.2;
+    text-align: left;
+    padding-bottom: 30px
+}
+.contact100 {
+	width: 500px;
+	background:  #fff;
+	border-radius:10px;
+	overflow: hidden;
+	padding: 62px 55px 65px;
+	box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
+	-o-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
+	-ms-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1)
 }
 
 /*---------------------
