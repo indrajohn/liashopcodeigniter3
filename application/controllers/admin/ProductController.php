@@ -24,16 +24,23 @@ class ProductController extends CI_Controller
         $config['overwrite']            = true;
         $config['max_size']             = 5000;
 
-        $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('image')) {
             return $this->upload->data("file_name");
         }
-        var_dump($upload_path);
-        var_dump($this->upload->display_errors());
-        $this->debug->debug($upload_path);
-        $this->debug->debug($this->upload->display_errors());
-        return "default.jpg";
+        if($this->upload->display_errors() != ''){
+            $this->debug->debug("masuk error");
+            return $this->upload->display_errors();
+        }
+        else{
+            if ($this->upload->do_upload('image')) {
+                $this->debug->debug("masuk images");
+                return $this->upload->data("file_name");
+            }
+            else{
+                return "default.jpg";
+            }
+        }
     }
 
     public function productList()
@@ -49,7 +56,16 @@ class ProductController extends CI_Controller
         $this->form_validation->set_rules('price', 'price', 'required');
         $this->form_validation->set_rules('stock', 'stock', 'required');
         $this->form_validation->set_rules('product_desc', 'product_desc', 'required');
-
+        $productName = $this->input->post("productName");
+        $url_photo = $this->_uploadImage($productName, $this->upload_path);
+        if(str_contains($url_photo,".jpg"||".png" || ".jpeg" || ".gif")){
+            $this->debug->debug("url: ".$url_photo);
+        }
+        else{
+            echo "<script type='text/javascript'>
+				alert('".$url_photo."');
+			</script>";
+        }
         if ($this->form_validation->run() != FALSE) {
             $productName = $this->input->post("productName");
             $price = $this->input->post("price");
@@ -57,7 +73,7 @@ class ProductController extends CI_Controller
             $discount = $this->input->post("discount");
             $product_desc = $this->input->post("product_desc");
             $stock = $this->input->post("stock");
-            $url_photo = $this->_uploadImage($productName, $this->upload_path);
+           
 
             $data = array(
                 "product_name" => $productName,
@@ -74,11 +90,7 @@ class ProductController extends CI_Controller
         }
         $dataCategory['dataCategory'] = $this->Category->getCategory();
         $this->load->view('admin/product/add-product', $dataCategory);
-        if ($this->form_validation->run() != FALSE) {
-            echo "<script type='text/javascript'>
-				alert('Data Has been Saved');
-			</script>";
-        }
+        
     }
     public function productEdit()
     {
