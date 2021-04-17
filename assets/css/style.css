@@ -1948,28 +1948,6 @@ ol {
 	content: "";
 }
 
-.nav-item {
-	margin-right: 46px;
-}
-
-.nav-item:last-child {
-	margin-right: 0;
-}
-
-.nav-item .nav-link {
-	font-family: "Cookie", sans-serif;
-	font-size: 24px;
-	color: #666666;
-	font-weight: 600;
-	border: none;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	padding: 0;
-}
-
-.nav-item .nav-link.active {
-	color: #111111;
-}
 
 .tab-content .tab-pane h6 {
 	color: #666666;
@@ -2914,24 +2892,27 @@ ol {
 	color: #ca1515;
 	margin-right: 5px;
 }
+
 /*---------------------
   Contact Us
 -----------------------*/
 .contact100-form {
-    width: 100%
+	width: 100%
 }
+
 .contact100-form-title {
-    display: block;
-    font-size: 30px;
-    color:#333;
-    line-height: 1.2;
-    text-align: left;
-    padding-bottom: 30px
+	display: block;
+	font-size: 30px;
+	color: #333;
+	line-height: 1.2;
+	text-align: left;
+	padding-bottom: 30px
 }
+
 .contact100 {
 	width: 500px;
-	background:  #fff;
-	border-radius:10px;
+	background: #fff;
+	border-radius: 10px;
 	overflow: hidden;
 	padding: 62px 55px 65px;
 	box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);

@@ -4,9 +4,10 @@
         <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
             aria-label="Toggle navigation">
+
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto toolbar-link" style="padding-left: 250px;">
+            <ul class="navbar-nav mx-auto toolbar-link">
                 <li class="nav-item" style="cursor:default">
                     <a class="nav-link <?php if ($head == 'home') echo 'active' ?>" href="<?php echo base_url() ?>">
                         Home
@@ -28,23 +29,47 @@
                     </a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto toolbar-right">
-                <li class='nav-item'>
-                    <a class='nav-link' href='cart' style="padding: .6rem;"> <i class='fas fa-shopping-cart'></i> </a>
-                </li>
-                <li class='nav-item' style='cursor:default'>
-                    <div class='nav-link' href=''> | </div>
-                </li>
+            <!--
+            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 d-none d-md-inline-block form-inline">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <ul class="dropdown-menu" style="margin-left:-6.5em" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="login">Login</a></li>
-                        <li><a class="dropdown-item" href="register">Register</a></li>
-                    </ul>
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
                 </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                 Authentication Links -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <i class="fas fa-search"></i> </a>
+            </li>
+            <li class="nav-item" style="cursor:default">
+                <div class="nav-link" href=""> | </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+
+
+            </li>
+            <?php
+			if ($this->session->userdata('username') != null) {
+				echo "<li class='nav-item' style='cursor:default'>
+                      		  <div class='nav-link' href=''> | </div>
+                    	  </li>
+							<li class='nav-item'>
+								<a class='nav-link' href='cart'> <i class='fas fa-shopping-cart'></i> </a>
+							</li>
+                      ";
+			}
+			?>
+
             </ul>
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarNavAltMarkup"
