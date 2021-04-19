@@ -119,8 +119,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <ul class="product__hover">
                                 <li><a href="<?php echo base_url(); ?>assets/images/product/product-2.jpg"
                                         class="image-popup"><span class="arrow_expand"></span></a></li>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                <?php
+                                if ($this->session->userdata('username') != null) {
+                                ?>
+                                <!-- is login -->
+                                <li><a href="favourite"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="chart"><span class="icon_bag_alt"></span></a></li>
+                                <?php
+                                } else {
+                                ?>
+                                <!-- is not login -->
+                                <li><a href="login"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="login"><span class="icon_bag_alt"></span></a></li>
+                                <?php
+                                }
+                                ?>
+
                             </ul>
                         </div>
                         <div class="product__item__text">

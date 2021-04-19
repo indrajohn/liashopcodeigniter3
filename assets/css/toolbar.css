@@ -51,7 +51,7 @@ ul {
 }
 
 
-@media(max-width: 767px) {
+@media(max-width: 992px) {
 	.offcanvas-close {
 		position: absolute;
 		width: 40px;

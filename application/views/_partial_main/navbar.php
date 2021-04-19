@@ -29,20 +29,40 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto toolbar-right">
+                <?php
+                if ($this->session->userdata('username') != null) {
+                ?>
                 <li class='nav-item'>
                     <a class='nav-link' href='cart' style="padding: .6rem;"> <i class='fas fa-shopping-cart'></i> </a>
                 </li>
                 <li class='nav-item' style='cursor:default'>
                     <div class='nav-link' href=''> | </div>
                 </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
                     <ul class="dropdown-menu" style="margin-left:-6.5em" aria-labelledby="navbarDropdown">
+
+                        <?php
+                        if ($this->session->userdata('username') != null) {
+                        ?>
+                        <!-- is login -->
                         <li><a class="dropdown-item" href="login">Login</a></li>
                         <li><a class="dropdown-item" href="register">Register</a></li>
+                        <?php
+                        } else {
+                        ?>
+                        <!-- is not login -->
+                        <li><a class="dropdown-item" href="profile">Login</a></li>
+                        <li><a class="dropdown-item" href="register">Register</a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </li>
             </ul>
