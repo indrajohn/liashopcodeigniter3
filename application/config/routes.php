@@ -66,8 +66,15 @@ $route['admin/category'] = 'admin/CategoryController/categoryList';
 $route['admin/add-category'] = 'admin/CategoryController/categoryAdd';
 $route['admin/edit-category'] = 'admin/CategoryController/categoryEdit';
 $route['admin/delete-category'] = 'admin/CategoryController/categoryDelete';
+
+$route['admin/sub-category'] = 'admin/SubCategoryController/subCategoryList';
+$route['admin/add-sub-category'] = 'admin/SubCategoryController/subCategoryAdd';
+$route['admin/edit-sub-category'] = 'admin/SubCategoryController/subCategoryEdit';
+$route['admin/delete-sub-category'] = 'admin/SubCategoryController/subCategoryDelete';
+
 $route['admin/product'] = 'admin/ProductController/productList';
 $route['admin/add-product'] = 'admin/ProductController/productAdd';
+$route['admin/validate-product'] = 'admin/ProductController/validateProduct';
 $route['admin/edit-product'] = 'admin/ProductController/productEdit';
 $route['admin/delete-product'] = 'admin/ProductController/productDelete';
 //routes home

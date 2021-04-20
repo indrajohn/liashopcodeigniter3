@@ -335,7 +335,12 @@ legend {
 	color: inherit;
 	white-space: normal;
 }
-
+.image-preview{
+	width:250px;
+	height: 360;
+	display: none;
+	margin:10px;
+}
 progress {
 	vertical-align: baseline;
 }

@@ -1,6 +1,5 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
+<!DOCTYPE html>
+<html lang="en">
 <?php $this->load->view('_partial_admin/header'); ?>
 
 <body class="sb-nav-fixed">
@@ -8,81 +7,59 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div id="layoutSidenav">
 		<?php $this->load->view('_partial_admin/sidebar'); ?>
 		<div id="layoutSidenav_content">
-			<main>
+			<section>
 				<div class="container-fluid">
-					<h1 class="mt-4">Product</h1>
+					<h1 class="mt-4">Category</h1>
 					<div class="card mb-4">
 						<div class="card-body">
-							<a href="<?php echo base_url(); ?>admin/add-product" type="button"
-								class="btn btn-primary float-right" style="margin-bottom:20px;">Add Product</a>
-
+							<a href="<?php echo base_url(); ?>admin/add-sub-category" type="button"
+								class="btn btn-primary float-right" style="margin-bottom:20px;">Add Category</a>
 							<div class="table-responsive">
-
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
-
 										<tr>
 											<th>No</th>
-											<th>Name</th>
-											<th>Category</th>
-											<th>Price</th>
-											<th>Discount</th>
-											<th>Stock</th>
+											<th>Sub Category Name</th>
+											<th>Category Name</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 											<th>No</th>
-											<th>Name</th>
-											<th>Category</th>
-											<th>Price</th>
-											<th>Discount</th>
-											<th>Stock</th>
+											<th>Sub Category Name</th>
+											<th>Category Name</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
 									<tbody>
 										<?php $number = 0; ?>
-										<?php if(sizeof($data) > 0){?>
 										<!--<a href='#' class='btn btn-success'><i class='fas fa-edit' style='font-size:14px></i></a> -->
-										<?php foreach ($data as $product) {
+										<?php foreach ($data as $category) {
                                             $number++;
                                             echo "<tr>
                                                 <td>" . $number . "</td>
-                                                <td>" . $product['product_name'] . "</td>
-                                                <td>" . $product['category_name'] . "</td>
-                                                <td>" . $product['product_price'] . "</td>
-                                                <td>" . $product['product_discount'] . "</td>
-                                                <td>" . $product['product_stock'] . "</td>
+                                                <td>" . $category['category_name'] . "</td>
                                                 <td>
-                                                    <form action='" . base_url() . "admin/edit-product' method='POST' style='float:left;margin-right:5px;'>
-                                                        <input type='hidden' value='" . $product['product_id'] . "' name='id' />
+                                                    <form action='edit-category' method='POST' style='float:left;margin-right:5px;'>
+                                                        <input type='hidden' value='" . $category['category_id'] . "' name='category_id' />
                                                         <input type='submit' class='btn btn-success' value='&#xf044;' style='font-family: Font Awesome\ 5 Free;'/>
                                                     </form>
-                                                    <form action='" . base_url() . "admin/delete-product' method='POST'>
-                                                        <input type='hidden' value='" . $product['product_id'] . "' name='id' />
+                                                    <form action='delete-category' method='POST'>
+                                                        <input type='hidden' value='" . $category['category_id'] . "' name='category_id' />
                                                         <input type='submit' class='btn btn-danger' value='&#xf2ed;' style='font-family: Font Awesome\ 5 Free;'/>
                                                     </form>
                                                 </td>
                                                 </tr>";
                                         }
                                         ?>
-
-										<?php
-                            }
-                            else{
-                                echo " <tr><td colspan='6'>No Data </td></tr>";
-                            } ?>
 									</tbody>
 								</table>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
-			</main>
+			</section>
 		</div>
 	</div>
 	<?php $this->load->view('_partial_admin/footer'); ?>

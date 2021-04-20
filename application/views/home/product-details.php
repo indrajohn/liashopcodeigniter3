@@ -137,19 +137,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</div>
 				<div class="col-lg-12">
 					<div class="product__details__tab">
-						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+									data-bs-target="#home" type="button" role="tab" aria-controls="home"
+									aria-selected="true">Description</button>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+									type="button" role="tab" aria-controls="profile"
+									aria-selected="false">Specification</button>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="messages-tab" data-bs-toggle="tab"
+									data-bs-target="#messages" type="button" role="tab" aria-controls="messages"
+									aria-selected="false">Reviews ( 2 )</button>
 							</li>
 						</ul>
 						<div class="tab-content">
-							<div class="tab-pane active" id="tabs-1" role="tabpanel">
+							<div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
 								<h6>Description</h6>
 								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
 									quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
@@ -162,7 +168,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
 									quis, sem.</p>
 							</div>
-							<div class="tab-pane" id="tabs-2" role="tabpanel">
+							<div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 								<h6>Specification</h6>
 								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
 									quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
@@ -175,7 +181,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
 									quis, sem.</p>
 							</div>
-							<div class="tab-pane" id="tabs-3" role="tabpanel">
+							<div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
 								<h6>Reviews ( 2 )</h6>
 								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
 									quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
@@ -192,6 +198,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="related__title">

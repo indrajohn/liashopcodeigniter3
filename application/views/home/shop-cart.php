@@ -35,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<tbody>
 								<tr>
 									<td class="cart__product__item">
-										<img src="<?php echo base_url(); ?>assets/images/shopcart/cp-1.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/images/shopcart/cp-1.jpg" alt="">
 										<div class="cart__product__item__title">
 											<h6>Chain bucket bag</h6>
 											<div class="rating">
@@ -49,16 +49,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</td>
 									<td class="cart__price">$ 150.0</td>
 									<td class="cart__quantity">
-										<div class="pro-qty"><span class="dec qtybtn">-</span>
+										<div class="pro-qty">
 											<input type="text" value="1">
-											<span class="inc qtybtn">+</span></div>
+										</div>
 									</td>
 									<td class="cart__total">$ 300.0</td>
 									<td class="cart__close"><span class="icon_close"></span></td>
 								</tr>
 								<tr>
 									<td class="cart__product__item">
-										<img src="<?php echo base_url(); ?>assets/images/shopcart/cp-2.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/images/shopcart/cp-2.jpg" alt="">
 										<div class="cart__product__item__title">
 											<h6>Zip-pockets pebbled tote briefcase</h6>
 											<div class="rating">
@@ -72,16 +72,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</td>
 									<td class="cart__price">$ 170.0</td>
 									<td class="cart__quantity">
-										<div class="pro-qty"><span class="dec qtybtn">-</span>
+										<div class="pro-qty">
 											<input type="text" value="1">
-											<span class="inc qtybtn">+</span></div>
+										</div>
 									</td>
 									<td class="cart__total">$ 170.0</td>
 									<td class="cart__close"><span class="icon_close"></span></td>
 								</tr>
 								<tr>
 									<td class="cart__product__item">
-										<img src="<?php echo base_url(); ?>assets/images/shopcart/cp-3.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/images/shopcart/cp-3.jpg" alt="">
 										<div class="cart__product__item__title">
 											<h6>Black jean</h6>
 											<div class="rating">
@@ -95,16 +95,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</td>
 									<td class="cart__price">$ 85.0</td>
 									<td class="cart__quantity">
-										<div class="pro-qty"><span class="dec qtybtn">-</span>
+										<div class="pro-qty">
 											<input type="text" value="1">
-											<span class="inc qtybtn">+</span></div>
+										</div>
 									</td>
 									<td class="cart__total">$ 170.0</td>
 									<td class="cart__close"><span class="icon_close"></span></td>
 								</tr>
 								<tr>
 									<td class="cart__product__item">
-										<img src="<?php echo base_url(); ?>assets/images/shopcart/cp-4.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/images/shopcart/cp-4.jpg" alt="">
 										<div class="cart__product__item__title">
 											<h6>Cotton Shirt</h6>
 											<div class="rating">
@@ -118,9 +118,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</td>
 									<td class="cart__price">$ 55.0</td>
 									<td class="cart__quantity">
-										<div class="pro-qty"><span class="dec qtybtn">-</span>
+										<div class="pro-qty">
 											<input type="text" value="1">
-											<span class="inc qtybtn">+</span></div>
+										</div>
 									</td>
 									<td class="cart__total">$ 110.0</td>
 									<td class="cart__close"><span class="icon_close"></span></td>

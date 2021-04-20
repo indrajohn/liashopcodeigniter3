@@ -3,10 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ProductController extends CI_Controller
 {
+    var $status = -1;
     function __construct()
     {
         parent::__construct();
-        $this->upload_path = $_SERVER['DOCUMENT_ROOT'] . '/liashop/upload/product';
+        $this->upload_path = $_SERVER['DOCUMENT_ROOT'] . '/liashop/upload/product/';
         $this->load->model('admin/Product');
         $this->load->model('admin/Category');
     }
@@ -23,7 +24,7 @@ class ProductController extends CI_Controller
         $config['file_name']            = $nama;
         $config['overwrite']            = true;
         $config['max_size']             = 5000;
-
+        $this->upload->initialize($config);
 
         if ($this->upload->do_upload('image')) {
             return $this->upload->data("file_name");
@@ -50,8 +51,14 @@ class ProductController extends CI_Controller
         $this->load->view('admin/product/list-product', $data);
     }
 
-    public function productAdd()
+   public function productAdd()
     {
+        $dataCategory['dataCategory'] = $this->Category->getCategory();
+        $dataCategory['status'] = $this->status;
+        $this->load->view('admin/product/add-product', $dataCategory);
+    }
+
+    public function validateProduct(){
         $this->form_validation->set_rules('productName', 'productName', 'required');
         $this->form_validation->set_rules('price', 'price', 'required');
         $this->form_validation->set_rules('stock', 'stock', 'required');
@@ -62,9 +69,7 @@ class ProductController extends CI_Controller
             $this->debug->debug("url: ".$url_photo);
         }
         else{
-            echo "<script type='text/javascript'>
-				alert('".$url_photo."');
-			</script>";
+            $this->status = $url_photo;
         }
         if ($this->form_validation->run() != FALSE) {
             $productName = $this->input->post("productName");
@@ -87,13 +92,20 @@ class ProductController extends CI_Controller
             $this->Product->insertProduct($data);
 
             $this->clear_field_data();
+            $this->status = 0;
         }
-        $dataCategory['dataCategory'] = $this->Category->getCategory();
-        $this->load->view('admin/product/add-product', $dataCategory);
         
+        $this->productAdd();
     }
     public function productEdit()
     {
+        $this->debug->debug($this->upload_path);
+        $id = $this->input->post('id');
+        $data['data'] = $this->Product->getProductById($id);
+        $data['dataCategory'] = $this->Category->getCategory();
+        $this->load->view('admin/product/edit-product', $data);
+    }
+    public function validateEditProduct(){
         $id = $this->input->post('id');
         $data['data'] = $this->Product->getProductById($id);
         $this->form_validation->set_rules('productName', 'productName', 'required');
@@ -101,7 +113,6 @@ class ProductController extends CI_Controller
         $this->form_validation->set_rules('stock', 'stock', 'required');
         $this->form_validation->set_rules('product_desc', 'product_desc', 'required');
         if ($this->form_validation->run() != FALSE) {
-            $id = $this->input->post('id');
             $productName = $this->input->post("productName");
             $price = $this->input->post("price");
             $product_desc = $this->input->post("product_desc");
@@ -130,11 +141,7 @@ class ProductController extends CI_Controller
             $this->clear_field_data();
             redirect("admin/product");
         }
-        $data['data'] = $this->Product->getProductById($id);
-        $data['dataCategory'] = $this->Category->getCategory();
-        $this->load->view('admin/product/edit-product', $data);
     }
-
     public function productDelete()
     {
         $id = $this->input->post('id');
