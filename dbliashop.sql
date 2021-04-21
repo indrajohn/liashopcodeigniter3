@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2021 at 07:01 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Apr 21, 2021 at 03:03 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,10 +50,9 @@ CREATE TABLE `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
-(2, ' tes4'),
-(3, 'tes'),
-(4, 'tes'),
-(5, ' tes2');
+(86, 'Men24'),
+(87, 'Kids'),
+(88, '2tes');
 
 -- --------------------------------------------------------
 
@@ -85,12 +84,56 @@ CREATE TABLE `tbl_product` (
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbl_product`
+-- Table structure for table `tbl_relationship_category`
 --
 
-INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_desc`, `product_url`, `product_price`, `product_discount`, `product_stock`, `category_id`) VALUES
-(1, 'tes24', 'sdas', '', 333, 3, 33, 2);
+CREATE TABLE `tbl_relationship_category` (
+  `relationship_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `sub_category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_relationship_category`
+--
+
+INSERT INTO `tbl_relationship_category` (`relationship_id`, `category_id`, `sub_category_id`) VALUES
+(2, 88, 15),
+(5, 87, 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sub_category`
+--
+
+CREATE TABLE `tbl_sub_category` (
+  `sub_category_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_sub_category`
+--
+
+INSERT INTO `tbl_sub_category` (`sub_category_id`, `name`) VALUES
+(1, 'tess'),
+(2, 'tess'),
+(3, 'tess'),
+(4, 'tess'),
+(5, 'handuk'),
+(6, 'tess'),
+(7, 'tess'),
+(8, 'haiudpdate'),
+(9, 'handuk'),
+(10, 'tess'),
+(11, 'handuk'),
+(12, 'tess'),
+(13, 'tess'),
+(18, 'handuk2');
 
 -- --------------------------------------------------------
 
@@ -138,6 +181,18 @@ ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `tbl_relationship_category`
+--
+ALTER TABLE `tbl_relationship_category`
+  ADD PRIMARY KEY (`relationship_id`);
+
+--
+-- Indexes for table `tbl_sub_category`
+--
+ALTER TABLE `tbl_sub_category`
+  ADD PRIMARY KEY (`sub_category_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -157,7 +212,7 @@ ALTER TABLE `tbl_cart`
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tbl_checkout`
@@ -169,7 +224,19 @@ ALTER TABLE `tbl_checkout`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `tbl_relationship_category`
+--
+ALTER TABLE `tbl_relationship_category`
+  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_sub_category`
+--
+ALTER TABLE `tbl_sub_category`
+  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
