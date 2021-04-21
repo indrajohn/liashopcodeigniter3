@@ -63,20 +63,20 @@ $route['forgot-password'] = 'admin/LoginController/forgotPassword';
 //routes admin
 $route['admin/dashboard'] = 'admin/AdminController/dashboard';
 $route['admin/category'] = 'admin/CategoryController/categoryList';
-$route['admin/add-category'] = 'admin/CategoryController/categoryAdd';
-$route['admin/edit-category'] = 'admin/CategoryController/categoryEdit';
-$route['admin/delete-category'] = 'admin/CategoryController/categoryDelete';
+$route['admin/category/add-category'] = 'admin/CategoryController/categoryAdd';
+$route['admin/category/edit-category/:num'] = 'admin/CategoryController/categoryEdit/$1';
+$route['admin/category/delete-category/:num'] = 'admin/CategoryController/categoryDelete/$1';
 
 $route['admin/sub-category'] = 'admin/SubCategoryController/subCategoryList';
-$route['admin/add-sub-category'] = 'admin/SubCategoryController/subCategoryAdd';
-$route['admin/edit-sub-category'] = 'admin/SubCategoryController/subCategoryEdit';
-$route['admin/delete-sub-category'] = 'admin/SubCategoryController/subCategoryDelete';
+$route['admin/sub-category/add-sub-category'] = 'admin/SubCategoryController/subCategoryAdd';
+$route['admin/sub-category/edit-sub-category/:num'] = 'admin/SubCategoryController/subCategoryEdit/$1';
+$route['admin/sub-category/delete-sub-category/:num'] = 'admin/SubCategoryController/subCategoryDelete/$1';
 
 $route['admin/product'] = 'admin/ProductController/productList';
-$route['admin/add-product'] = 'admin/ProductController/productAdd';
-$route['admin/validate-product'] = 'admin/ProductController/validateProduct';
-$route['admin/edit-product'] = 'admin/ProductController/productEdit';
-$route['admin/delete-product'] = 'admin/ProductController/productDelete';
+$route['admin/product/add-product'] = 'admin/ProductController/productAdd';
+$route['admin/product/get_sub_category'] = 'admin/ProductController/get_sub_category';
+$route['admin/product/edit-product/:num'] = 'admin/ProductController/productEdit/$1';
+$route['admin/product/delete-product/:num'] = 'admin/ProductController/productDelete/$1';
 //routes home
 $route['about-us'] = 'Home/aboutUs';
 $route['product'] = 'Home/product';

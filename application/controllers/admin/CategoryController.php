@@ -3,20 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class CategoryController extends CI_Controller
 {
+    public $success = 0;
     function __construct()
     {
         parent::__construct();
         $this->load->model('admin/Category');
     }
-    public function clear_field_data()
-    {
-        $_POST = array();
-        $this->_field_data = array();
-        return $this;
-    }
     public function categoryList()
     {
-        $data['head'] = 'category';
         $data['data'] = $this->Category->getCategory();
         $this->load->view('admin/category/list-category', $data);
     }
@@ -30,42 +24,35 @@ class CategoryController extends CI_Controller
                 "category_name" => $categoryName
             );
             $this->Category->insertCategory($data);
-
-            $this->clear_field_data();
+            $this->success = 1;
         }
-        $this->load->view('admin/category/add-category');
+        $data['action'] = 'add';
+        $data['success'] = $this->success;
+        $this->load->view('admin/category/add-category',$data);
     }
 
     public function categoryEdit()
     {
-        $id = $this->input->post('category_id');
-        $data['data'] = $this->Category->getCategoryById($id);
+        $id = $this->uri->segment(4);
         $this->form_validation->set_rules('categoryname', 'categoryname', 'required');
         if ($this->form_validation->run() != FALSE) {
-
             $categoryName = $this->input->post("categoryname");
-            $dataUpdated = array(
+            $data = array(
                 "category_name" => $categoryName
             );
-            $this->Category->editCategory($id, $dataUpdated);
-
-            $this->clear_field_data();
-            redirect("admin/category");
+            $this->Category->editCategory($id,$data);
+            $this->success = 1;
+            
         }
-        $this->load->view('admin/category/edit-category', $data);
+        $data['action'] = 'edit';
+        $data['success'] = $this->success;
+        $data['data'] = $this->Category->getCategoryById($id);
+        $this->load->view('admin/category/add-category',$data);
     }
     public function categoryDelete()
     {
-        $id = $this->input->post('category_id');
-
-        if ($id != NULL) {
-            echo "<script type='text/javascript'> if(confirm('Are You Sure Want To Delete This Data ? ')){
-				" . $this->Category->deleteCategory($id) . " console.log('NOT OKE');
-			}
-			else{
-				console.log('NOT OKE');
-			} </script>";
-        }
+        $id = $this->uri->segment(4);
+        $this->Category->deleteCategory($id);
         redirect('admin/category');
     }
 }

@@ -3,69 +3,73 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class SubCategoryController extends CI_Controller
 {
+    public $success = 0;
     function __construct()
     {
         parent::__construct();
         $this->load->model('admin/SubCategory');
-    }
-    public function clear_field_data()
-    {
-        $_POST = array();
-        $this->_field_data = array();
-        return $this;
+        $this->load->model('admin/Category');
     }
     public function subCategoryList()
     {
-        $data['head'] = 'subcategory';
         $data['data'] = $this->SubCategory->getSubCategory();
         $this->load->view('admin/sub_category/list-sub-category', $data);
     }
     public function subCategoryAdd()
     {
+        
         $this->form_validation->set_rules('subcategoryname', 'subcategoryname', 'required');
+        $this->form_validation->set_rules('category', 'category', 'required');
         if ($this->form_validation->run() != FALSE) {
-            $categoryName = $this->input->post("subcategoryname");
-            $this->debug->debug($categoryName);
-            $data = array(
-                "name" => $categoryName
+            $subCategoryName = $this->input->post("subcategoryname");
+            $category_id = $this->input->post("category");
+            $dataCategory = array(
+                "name" => $subCategoryName
             );
-            $this->Category->insertCategory($data);
-
-            $this->clear_field_data();
+          
+            $sub_category_id = $this->SubCategory->insertSubCategory($dataCategory);
+            $dataRelationshipCategory = array(
+                "category_id" => $category_id,
+                "sub_category_id" => $sub_category_id
+            );
+            $this->SubCategory->insertRelationshipSubCategory($dataRelationshipCategory);
+            $this->success = 1;
         }
-        $this->load->view('admin/sub_category/add-sub-category');
+        $data['action'] = 'add';
+        $data['category'] = $this->Category->getCategory();
+        $data['success'] = $this->success;
+        $this->load->view('admin/sub_category/add-sub-category',$data);
     }
 
     public function subCategoryEdit()
     {
-        $id = $this->input->post('sub_category_id');
-        $data['data'] = $this->Category->getCategoryById($id);
+      
+        $id = $this->uri->segment(4);
         $this->form_validation->set_rules('subcategoryname', 'subcategoryname', 'required');
+        $this->form_validation->set_rules('category', 'category', 'required');
         if ($this->form_validation->run() != FALSE) {
+            $subCategoryName = $this->input->post("subcategoryname");
+            $category_id = $this->input->post("category");
 
-            $categoryName = $this->input->post("subcategoryname");
-            $dataUpdated = array(
-                "name" => $categoryName
+            $data = array(
+                "name" => $subCategoryName,
+                "category_id" => $category_id,
+                "sub_category_id" => $id
             );
-            $this->Category->editCategory($id, $dataUpdated);
-
-            $this->clear_field_data();
-            redirect("admin/sub-category");
+            $this->SubCategory->editSubCategory($data);
+            $this->success = 1;
         }
-        $this->load->view('admin/category/edit-category', $data);
+
+        $data['data'] = $this->SubCategory->getSubCategoryById($id);
+        $data['action'] = 'edit';
+        $data['category'] = $this->Category->getCategory();
+        $data['success'] = $this->success;
+        $this->load->view('admin/sub_category/add-sub-category', $data);
     }
     public function subCategoryDelete()
     {
-        $id = $this->input->post('sub_category_id');
-
-        if ($id != NULL) {
-            echo "<script type='text/javascript'> if(confirm('Are You Sure Want To Delete This Data ? ')){
-				" . $this->Category->deleteCategory($id) . " console.log('NOT OKE');
-			}
-			else{
-				console.log('NOT OKE');
-			} </script>";
-        }
-        redirect('admin/category');
+        $id = $this->uri->segment(4);
+        $this->SubCategory->deleteSubCategory($id);
+        redirect('admin/sub-category');
     }
 }

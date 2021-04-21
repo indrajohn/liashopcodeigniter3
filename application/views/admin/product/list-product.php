@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<h1 class="mt-4">Product</h1>
 					<div class="card mb-4">
 						<div class="card-body">
-							<a href="<?php echo base_url(); ?>admin/add-product" type="button"
+							<a href="<?php echo base_url(); ?>admin/product/add-product" type="button"
 								class="btn btn-primary float-right" style="margin-bottom:20px;">Add Product</a>
 
 							<div class="table-responsive">
@@ -72,7 +72,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<?php
                             }
                             else{
-                                echo " <tr><td colspan='6'>No Data </td></tr>";
+                                echo " <tr><td >No Data </td></tr>";
                             } ?>
 									</tbody>
 								</table>

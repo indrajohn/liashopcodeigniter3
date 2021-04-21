@@ -14,12 +14,16 @@
 					Product
 					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 				</a>
-				<div class="collapse <?php if (isset($head) == 'category' || isset($head) == 'product') echo 'show' ?> "
+				<div class="collapse <?php if ($this->uri->segment(2) == 'product' || $this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'sub-category') echo 'show' ?> "
 					id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 					<nav class="sb-sidenav-menu-nested nav">
-						<a class="nav-link" href="category">Category</a>
-						<a class="nav-link" href="sub-category">Sub Category</a>
-						<a class="nav-link" href="product">Product</a>
+						<a class="nav-link <?php if ($this->uri->segment(2) == 'category') echo 'active'?>"
+							href="<?php echo base_url(); ?>admin/category">Category</a>
+						<a class="nav-link <?php if ($this->uri->segment(2) == 'sub-category') echo 'active'?>"
+							href="<?php echo base_url(); ?>admin/sub-category">Sub
+							Category</a>
+						<a class="nav-link <?php if ($this->uri->segment(2) == 'product') echo 'active'?>"
+							href="<?php echo base_url(); ?>admin/product">Product</a>
 					</nav>
 				</div>
 			</div>
