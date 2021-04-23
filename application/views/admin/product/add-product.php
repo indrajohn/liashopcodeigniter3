@@ -90,7 +90,7 @@
 
 		</div>
 	</div>
-	<script>
+	<script type="text/javascript">
 		jQuery(function ($) {
 			var baseUrl = $('#baseUrl').val();
 			var status = $('#status-error').val();

@@ -1,4 +1,4 @@
-(function($) {
+jQuery(function () {
     "use strict";
 
     // Add active state to sidbar nav links
@@ -70,10 +70,7 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-    
         $("#image").change(function() {
             readURL(this);
         });
-
-})(jQuery);
+});

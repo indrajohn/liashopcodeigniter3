@@ -55,7 +55,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <td>" . $product['product_name'] . "</td>
                                                 <td>" . $product['category_name'] . "</td>
                                                 <td>" . $product['name'] . "</td>
-                                                <td>" . $product['product_price'] . "</td>
+                                                <td class='price'>" . $product['product_price'] . "</td>
                                                 <td>" . $product['product_discount'] . "</td>
                                                 <td>" . $product['product_stock'] . "</td>
 												<td>
@@ -82,4 +82,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</main>
 		</div>
 	</div>
+	<script>
+		jQuery(function ($) {
+			$('#dataTable .price').each(function () {
+				price = $(this).html();
+				var rupiah = convertRupiah(price, "Rp. ");
+				$(this).html(rupiah);
+			});
+
+			function convertRupiah(angka, prefix) {
+				var number_string = angka.replace(/[^,\d]/g, "").toString(),
+					split = number_string.split(","),
+					sisa = split[0].length % 3,
+					rupiah = split[0].substr(0, sisa),
+					ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+				if (ribuan) {
+					var separator = sisa ? "." : "";
+					rupiah += separator + ribuan.join(".");
+				}
+
+				rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+				return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+			}
+
+		});
+
+	</script>
 	<?php $this->load->view('_partial_admin/footer'); ?>
