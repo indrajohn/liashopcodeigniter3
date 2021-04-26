@@ -17,7 +17,7 @@ class SubCategoryController extends CI_Controller
     }
     public function subCategoryAdd()
     {
-        
+
         $this->form_validation->set_rules('subcategoryname', 'subcategoryname', 'required');
         $this->form_validation->set_rules('category', 'category', 'required');
         if ($this->form_validation->run() != FALSE) {
@@ -26,7 +26,7 @@ class SubCategoryController extends CI_Controller
             $dataCategory = array(
                 "name" => $subCategoryName
             );
-          
+
             $sub_category_id = $this->SubCategory->insertSubCategory($dataCategory);
             $dataRelationshipCategory = array(
                 "category_id" => $category_id,
@@ -38,12 +38,12 @@ class SubCategoryController extends CI_Controller
         $data['action'] = 'add';
         $data['category'] = $this->Category->getCategory();
         $data['success'] = $this->success;
-        $this->load->view('admin/sub_category/add-sub-category',$data);
+        $this->load->view('admin/sub_category/add-sub-category', $data);
     }
 
     public function subCategoryEdit()
     {
-      
+
         $id = $this->uri->segment(4);
         $this->form_validation->set_rules('subcategoryname', 'subcategoryname', 'required');
         $this->form_validation->set_rules('category', 'category', 'required');

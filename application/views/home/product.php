@@ -29,99 +29,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </div>
                                 <div class="categories__accordion">
                                     <div class="accordion" id="accordionExample">
-                                        <div class="card">
-                                            <div class="card-heading active">
-                                                <a data-bs-toggle="collapse" href="#collapseOne"
-                                                    aria-controls="collapseOne">
-                                                    Women
+                                        <?php for ($i = 0; $i < sizeof($dataCategory); $i++) {
+                                            echo " <div class='card'>
+                                            <div class='card-heading active'>
+                                                <a data-bs-toggle='collapse' href='#collapse" . $i . "'
+                                                    aria-controls='collapseOne'>
+                                                   " . $dataCategory[$i]['category_name'] . "
                                                 </a>
-
                                             </div>
-                                            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <ul>
-                                                        <li><a href="#">Coats</a></li>
-                                                        <li><a href="#">Jackets</a></li>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Jeans</a></li>
-                                                    </ul>
-                                                </div>
+                                            <div id='collapse" . $i . "' class='collapse " . (($i === 0) ? 'show' : '') . " data-parent='#accordionExample'>
+                                                <div class='card-body'>
+                                                    <ul>";
+                                            for ($z = 0; $z < sizeof($dataSubCategory); $z++) {
+                                                if ($dataCategory[$i]['category_id'] == $dataSubCategory[$z]['category_id']) {
+                                                    echo " <li><a href='#'>" . $dataSubCategory[$z]['name'] . "</a></li>";
+                                                }
+                                            }
+                                            echo "</ul>
                                             </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-bs-toggle="collapse" href="#collapseTwo"
-                                                    aria-controls="collapseTwo">Men</a>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <ul>
-                                                        <li><a href="#">Coats</a></li>
-                                                        <li><a href="#">Jackets</a></li>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Jeans</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-bs-toggle="collapse" href="#collapseThree"
-                                                    aria-controls="collapseThree">Kids</a>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <ul>
-                                                        <li><a href="#">Coats</a></li>
-                                                        <li><a href="#">Jackets</a></li>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Jeans</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-bs-toggle="collapse" href="#collapseFour"
-                                                    aria-controls="collapseFour">Accessories</a>
-                                            </div>
-                                            <div id="collapseFour" class="collapse" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <ul>
-                                                        <li><a href="#">Coats</a></li>
-                                                        <li><a href="#">Jackets</a></li>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Jeans</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-bs-toggle="collapse" href="#collapseFive"
-                                                    aria-controls="collapseFive">Cosmetic</a>
-                                            </div>
-                                            <div id="collapseFive" class="collapse" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <ul>
-                                                        <li><a href="#">Coats</a></li>
-                                                        <li><a href="#">Jackets</a></li>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Jeans</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>";
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('admin/SubCategory');
+		$this->load->model('admin/Category');
+	}
 	public function index()
 	{
 		$data = [
@@ -29,6 +35,10 @@ class Home extends CI_Controller
 		$data = [
 			"head" => "product"
 		];
+		$data['dataCategory'] = $this->Category->getCategory();
+		$dataSubCategory = $this->SubCategory->getSubCategory();
+		$data['dataSubCategory'] = $dataSubCategory;
+
 		$this->load->view('home/product', $data);
 	}
 	public function shopCart()
@@ -59,5 +69,4 @@ class Home extends CI_Controller
 		];
 		$this->load->view('home/product-details', $data);
 	}
-	
 }
