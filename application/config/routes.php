@@ -58,7 +58,7 @@ $route['login'] = 'admin/LoginController/login';
 $route['checklogin'] = 'admin/LoginController/checklogin';
 $route['register'] = 'admin/LoginController/register';
 $route['forgot-password'] = 'admin/LoginController/forgotPassword';
-
+$route['email-confirmation'] = 'admin/LoginController/emailConfirmation';
 
 //routes admin
 $route['admin/dashboard'] = 'admin/AdminController/dashboard';
