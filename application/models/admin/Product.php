@@ -17,6 +17,16 @@ class Product extends CI_Model
         left join tbl_category c on rc.category_id = c.category_id");
         return $data->result_array();
     }
+    public function getProductBySubCategory($id)
+    {
+        $data = $this->db->query("SELECT p.*,sc.sub_category_id,sc.name,c.category_id,c.category_name FROM tbl_product p 
+        left join tbl_relationship_product rp on rp.product_id = p.product_id
+        left join tbl_sub_category sc on rp.sub_category_id = sc.sub_category_id
+        left join tbl_relationship_category rc on rc.sub_category_id = sc.sub_category_id
+        left join tbl_category c on rc.category_id = c.category_id
+        where sc.sub_category_id = $id");
+        return $data->result_array();
+    }
     public function deleteProduct($id)
     {
         $this->db->query("DELETE p,rp from tbl_product p

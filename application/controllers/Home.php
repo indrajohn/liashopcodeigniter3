@@ -8,6 +8,7 @@ class Home extends CI_Controller
 		parent::__construct();
 		$this->load->model('admin/SubCategory');
 		$this->load->model('admin/Category');
+		$this->load->model('admin/Product');
 	}
 	public function index()
 	{
@@ -32,9 +33,19 @@ class Home extends CI_Controller
 	}
 	public function product()
 	{
+		$category_id = $this->input->get('category_id');
+		$sub_category_id = $this->input->get('sub_category_id');
+		
 		$data = [
 			"head" => "product"
 		];
+		if($category_id != "" && $sub_category_id != ""){
+			$data['dataProduct'] = $this->Product->getProductBySubCategory($sub_category_id);
+		}
+		else{
+			$data['dataProduct'] = $this->Product->getProduct();
+		}
+		
 		$data['dataCategory'] = $this->Category->getCategory();
 		$dataSubCategory = $this->SubCategory->getSubCategory();
 		$data['dataSubCategory'] = $dataSubCategory;
