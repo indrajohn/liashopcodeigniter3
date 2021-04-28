@@ -69,6 +69,15 @@ class User extends CI_Model
         $query = $this->db->get('tbl_user')->result_array();
         return $query[0]['email'];
     }
+    public function checkEmail($email){
+        $this->db->where('email', $email);
+        $query = $this->db->get('tbl_user');
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function is_email_confirm($username,$password){
         $this->db->where('username', $username);
         $this->db->where('password', $password);

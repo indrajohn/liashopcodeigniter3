@@ -51,8 +51,57 @@ class LoginController extends CI_Controller
 	}
 	public function register()
 	{
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_check');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[20]');
+        $this->form_validation->set_rules('confirm-password', 'Confirm Password', 'trim|required|callback_checkpassword|min_length[8]|max_length[20]');
+		if (count($_POST) != 0){
+			if($this->form_validation->run() != FALSE){
+					$username = $this->input->post('username');
+					$email = $this->input->post('email');
+					$password = $this->input->post('password');
+					$confirmPassword = $this->input->post('confirm-password');
+					$this->debug->debug($password);
+					$this->debug->debug($confirmPassword);
+					if($password == $confirmPassword){
+						$error_password = null;
+					}
+				}
+			else{
+				$this->debug->debug("masuk sini");
+			}
+		}
+		
 		$data['head'] = ['register'];
 		$this->load->view('admin/auth/register', $data);
+	}
+	
+	public function checkpassword()
+	{
+		$password = $this->input->post('password');
+		$confirmPassword = $this->input->post('confirm-password');
+		
+		if($password != $confirmPassword){
+			$this->form_validation->set_message('checkpassword', 'The Confirm Password not match');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
+	}
+	public function email_check($str)
+	{
+		$email = $this->User->checkEmail($str);
+		$this->debug->debug("email: ".$email);
+		if($email == true){
+			$this->form_validation->set_message('email_check', 'Email is already taken');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
 	}
 	public function sendEmail1(){
 		$email = $this->input->get('email');
