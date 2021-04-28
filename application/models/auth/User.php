@@ -22,6 +22,11 @@ class User extends CI_Model
         $this->db->where('user_id', $id);
         $this->db->update('tbl_user', $data);
     }
+    public function updateEmailConfirmation($email,$data)
+    {
+        $this->db->where('email', $email);
+        $this->db->update('tbl_user', $data);
+    }
 
     public function getUserById($id)
     {
@@ -49,6 +54,25 @@ class User extends CI_Model
         $this->db->where('username', $username);
         $this->db->where('password', $password);
         $this->db->where('role', 'admin');
+        $query = $this->db->get('tbl_user');
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function getEmail($username,$password)
+    {
+        $this->db->select('email');
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $query = $this->db->get('tbl_user')->result_array();
+        return $query[0]['email'];
+    }
+    public function is_email_confirm($username,$password){
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $this->db->where('emailConfirmYn', 'Y');
         $query = $this->db->get('tbl_user');
         if ($query->num_rows() > 0) {
             return true;

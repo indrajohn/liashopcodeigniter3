@@ -18,7 +18,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							follow the link provided to complete your registration.</p>
 					</div>
 					<div class="card-footer text-center">
-						<p style="font-size:.7em">if you not got any email <a href="#">Resend confirmation mail</a></p>
+						<p style="font-size:.7em">if you not got any email <a
+								href="<?php echo base_url();?>email-confirmation/send-email?email=<?php if(isset($email)) echo $email?>">Resend
+								confirmation mail</a></p>
 					</div>
 				</div>
 			</div>

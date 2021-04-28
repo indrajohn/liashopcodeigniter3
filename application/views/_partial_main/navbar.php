@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#"> <img src="assets/images/logo.png" /></a>
+		<a class="navbar-brand" href="#"> <img src="<?php echo base_url();?>assets/images/logo.png" /></a>
 		<button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="offcanvas"
 			data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -74,7 +74,8 @@
 					aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">+</div>
 				<div class="offcanvas-content ms-2">
 					<li class="nav-item mb-4" style="cursor:default">
-						<a class="navbar-brand" href="#"> <img src="assets/images/logo.png" /></a>
+						<a class="navbar-brand" href="#"> <img
+								src="<?php echo base_url();?>assets/images/logo.png" /></a>
 					</li>
 					<li class="nav-item" style="cursor:default">
 						<a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>">Home</a>
