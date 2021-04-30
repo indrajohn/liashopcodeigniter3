@@ -61,6 +61,7 @@ $route['forgot-password'] = 'admin/LoginController/forgotPassword';
 $route['email-confirmation'] = 'admin/LoginController/emailConfirmation';
 $route['email-confirmation/send-email'] = 'admin/LoginController/sendEmail1';
 $route['email-confirmation/complete'] = 'admin/LoginController/Complete';
+$route['logout'] = 'admin/LoginController/logout';
 //routes admin
 $route['admin/dashboard'] = 'admin/AdminController/dashboard';
 $route['admin/category'] = 'admin/CategoryController/categoryList';

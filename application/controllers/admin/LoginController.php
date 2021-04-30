@@ -28,7 +28,14 @@ class LoginController extends CI_Controller
 		}
 		else{
 			if($this->isEmailConfirm() && $this->has_error == 'false'){
-				redirect('/');
+				$newdata = array(
+					'username'  => $this->user,
+					'email'     => $email,
+					'logged_in' => TRUE
+				);
+				$this->session->set_userdata($newdata);
+					redirect('/');
+
 			}else if($this->has_error == 'false'){
 				$this->has_error = 'email';
 				$email = $this->User->getEmail($this->user,$this->pass);
@@ -158,6 +165,10 @@ class LoginController extends CI_Controller
 	}
 	private function isEmailConfirm(){
 		return $this->User->is_email_confirm($this->user,$this->pass);
+	}
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('/');
 	}
 	
 }

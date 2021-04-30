@@ -52,8 +52,8 @@
                         if ($this->session->userdata('username') != null) {
                         ?>
 						<!-- is login -->
-						<li><a class="dropdown-item" href="login">Login</a></li>
-						<li><a class="dropdown-item" href="register">Register</a></li>
+						<li><a class="dropdown-item" href="login">Profile</a></li>
+						<li><a class="dropdown-item" href="logout">Logout</a></li>
 						<?php
                         } else {
                         ?>
