@@ -49,7 +49,8 @@ class Home extends CI_Controller
 		$data['dataCategory'] = $this->Category->getCategory();
 		$dataSubCategory = $this->SubCategory->getSubCategory();
 		$data['dataSubCategory'] = $dataSubCategory;
-
+		$data['subCategoryNow'] = $sub_category_id;
+		$data['dataCategoryNow'] = $category_id;
 		$this->load->view('home/product', $data);
 	}
 	public function shopCart()

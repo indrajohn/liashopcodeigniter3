@@ -31,13 +31,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<div class="accordion" id="accordionExample">
 										<?php for ($i = 0; $i < sizeof($dataCategory); $i++) {
                                             echo " <div class='card'>
-                                            <div class='card-heading active'>
+                                            <div class='card-heading ". (($i+1 == $dataCategoryNow) ? 'active' : '') . "'>
                                                 <a data-bs-toggle='collapse' href='#collapse" . $i . "'
                                                     aria-controls='collapseOne'>
                                                    " . $dataCategory[$i]['category_name'] . "
                                                 </a>
                                             </div>
-                                            <div id='collapse" . $i . "' class='collapse " . (($i === 0) ? 'show' : '') . " data-parent='#accordionExample'>
+                                            <div id='collapse" . $i . "' class='collapse " . (($i+1 == $dataCategoryNow) ? 'show' : '') . " data-parent='#accordionExample'>
                                                 <div class='card-body'>
                                                     <ul>";
                                                     
@@ -171,6 +171,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="col-lg-9 col-md-9">
 						<div class="row">
 							<?php if(isset($dataProduct)){
+								if(sizeof($dataProduct)!=0){
                                  foreach($dataProduct as $dataProduct){?>
 							<div class="col-lg-4 col-md-6">
 								<?php if($dataProduct['product_discount'] > 0){?>
@@ -199,7 +200,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 ?>
 												<!-- is login -->
 												<li><a href="favourite"><span class="icon_heart_alt"></span></a></li>
-												<li><a href="chart"><span class="icon_bag_alt"></span></a></li>
+												<li><a href="cart"><span class="icon_bag_alt"></span></a></li>
 												<?php
                                 } else {
                                 ?>
@@ -238,7 +239,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								</div>
 								<?php 
                             }
-                            }?>
+                            ?>
 								<div class="col-lg-12 text-center">
 									<div class="pagination__option">
 										<a href="#">1</a>
@@ -248,6 +249,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</div>
 								</div>
 							</div>
+							<?php }else{
+								echo "<p style='text-align:center'><b>No Data</b></p>";
+							} }?>
 						</div>
 					</div>
 				</div>
@@ -315,6 +319,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</div>
 		</div>
 	</section>
+
+	<script>
+		function convertRupiah(angka, prefix) {
+			var number_string = angka.replace(/[^,\d]/g, "").toString(),
+				split = number_string.split(","),
+				sisa = split[0].length % 3,
+				rupiah = split[0].substr(0, sisa),
+				ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+			if (ribuan) {
+				var separator = sisa ? "." : "";
+				rupiah += separator + ribuan.join(".");
+			}
+
+			rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+			return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+		}
+		var price = $(".product__price").html();
+		if (price != undefined) {
+			var priceArray = price.split("<span>");
+			var price1 = priceArray[0].trim();
+			var price2Array = priceArray[1].split("</span>");
+			var price2 = price2Array[0].trim();
+
+			price1 = convertRupiah(price1, "Rp. ");
+			price2 = convertRupiah(price2, "Rp. ");
+			$(".product__price").html(price1 + "<span>" + price2 + "</span>");
+		}
+
+	</script>
 
 
 	<?php $this->load->view('_partial_main/footer'); ?>
