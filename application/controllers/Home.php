@@ -9,6 +9,7 @@ class Home extends CI_Controller
 		$this->load->model('admin/SubCategory');
 		$this->load->model('admin/Category');
 		$this->load->model('admin/Product');
+		$this->load->model('Cart');
 	}
 	public function index()
 	{
@@ -35,17 +36,16 @@ class Home extends CI_Controller
 	{
 		$category_id = $this->input->get('category_id');
 		$sub_category_id = $this->input->get('sub_category_id');
-		
+
 		$data = [
 			"head" => "product"
 		];
-		if($category_id != "" && $sub_category_id != ""){
+		if ($category_id != "" && $sub_category_id != "") {
 			$data['dataProduct'] = $this->Product->getProductBySubCategory($sub_category_id);
-		}
-		else{
+		} else {
 			$data['dataProduct'] = $this->Product->getProduct();
 		}
-		
+
 		$data['dataCategory'] = $this->Category->getCategory();
 		$dataSubCategory = $this->SubCategory->getSubCategory();
 		$data['dataSubCategory'] = $dataSubCategory;
@@ -59,6 +59,21 @@ class Home extends CI_Controller
 			"head" => "cart"
 		];
 		$this->load->view('home/shop-cart', $data);
+	}
+	public function insertShopCart()
+	{
+		$product_id = $this->input->post('product_id');
+		$user_id = $this->input->post('user_id');
+		$quantity = $this->input->post('quantity');
+		if ($product_id != NULL) {
+			$data = array(
+				"category_name" => $product_id,
+				"user_id" => $user_id,
+				"product_total" => $quantity
+			);
+			$this->Cart->addCart($data);
+		} else {
+		}
 	}
 	public function checkout()
 	{
