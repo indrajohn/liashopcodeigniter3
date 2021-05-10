@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2021 at 03:03 PM
+-- Generation Time: May 10, 2021 at 07:42 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -50,9 +50,11 @@ CREATE TABLE `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
-(86, 'Men24'),
-(87, 'Kids'),
-(88, '2tes');
+(1, 'Woman'),
+(2, 'Men'),
+(3, 'Kids'),
+(4, 'Accessories'),
+(5, 'Cosmetic');
 
 -- --------------------------------------------------------
 
@@ -84,6 +86,14 @@ CREATE TABLE `tbl_product` (
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_product`
+--
+
+INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_desc`, `product_url`, `product_price`, `product_discount`, `product_stock`, `category_id`) VALUES
+(1, 'Furry hooded parka2', '444', 'Furry_hooded_parka2.jpg', 2147483647, 22, 0, 2),
+(2, 'Furry hooded parka1', 'desss', 'Furry_hooded_parka1.jpg', 240000, 1, 1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -102,7 +112,50 @@ CREATE TABLE `tbl_relationship_category` (
 
 INSERT INTO `tbl_relationship_category` (`relationship_id`, `category_id`, `sub_category_id`) VALUES
 (2, 88, 15),
-(5, 87, 18);
+(5, 87, 18),
+(6, 1, 19),
+(7, 1, 20),
+(8, 1, 21),
+(9, 1, 22),
+(10, 1, 23),
+(11, 1, 24),
+(12, 2, 25),
+(13, 2, 26),
+(14, 2, 27),
+(15, 2, 28),
+(16, 2, 29),
+(17, 2, 30),
+(18, 2, 31),
+(19, 3, 32),
+(20, 3, 33),
+(21, 3, 34),
+(22, 3, 35),
+(23, 3, 36),
+(24, 3, 37),
+(25, 4, 38),
+(26, 4, 39),
+(27, 5, 40),
+(28, 5, 41);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_relationship_product`
+--
+
+CREATE TABLE `tbl_relationship_product` (
+  `id` int(11) NOT NULL,
+  `sub_category_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_relationship_product`
+--
+
+INSERT INTO `tbl_relationship_product` (`id`, `sub_category_id`, `product_id`) VALUES
+(1, 41, 1),
+(2, 19, 2);
 
 -- --------------------------------------------------------
 
@@ -133,7 +186,30 @@ INSERT INTO `tbl_sub_category` (`sub_category_id`, `name`) VALUES
 (11, 'handuk'),
 (12, 'tess'),
 (13, 'tess'),
-(18, 'handuk2');
+(18, 'handuk2'),
+(19, 'Coats'),
+(20, 'Jacket'),
+(21, 'Dresses'),
+(22, 'Shirts'),
+(23, 'T-shirts'),
+(24, 'Jeans'),
+(25, 'Coats'),
+(26, 'Jacket'),
+(27, 'Dresses'),
+(28, 'Shirts'),
+(29, 'Shirts'),
+(30, 'T-shirts'),
+(31, 'Jeans'),
+(32, 'Coats'),
+(33, 'Jacket'),
+(34, 'Dresses'),
+(35, 'Shirts'),
+(36, 'T-shirts'),
+(37, 'Jeans'),
+(38, 'Hat'),
+(39, 'Glass'),
+(40, 'Lipstic'),
+(41, 'Hair Style');
 
 -- --------------------------------------------------------
 
@@ -145,12 +221,45 @@ CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(200) NOT NULL,
   `last_name` varchar(200) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `address` text NOT NULL,
-  `role` varchar(20) NOT NULL
+  `role` varchar(20) NOT NULL,
+  `emailConfirmYn` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`user_id`, `first_name`, `last_name`, `email`, `phone`, `username`, `password`, `address`, `role`, `emailConfirmYn`) VALUES
+(1, 'admin', 'admin', 'admin@gmail.com', '082828', 'admin', 'admin', 'admin', 'admin', 'Y'),
+(2, 'user', 'user', 'idbuatdijual0001@gmail.com', '082828', 'user', 'user', 'user', 'user', 'Y'),
+(10, '', '', 'tes@gmail.com', '', 'tes', 'tes', '', 'user', 'N'),
+(11, '', '', 'tes@gmail.com', '', 'tes', 'tes', '', 'user', 'N'),
+(12, '', '', 'tes@gmail.com', '', 'tes', 'tes', '', 'user', 'N'),
+(13, '', '', 'tes@gmail.com', '', 'tes', '62c0049936ecfd5b52303baaf2526276', '', 'user', 'N'),
+(14, '', '', 'tes@gmail.com', '', 'tes', 'a', '', 'user', 'N'),
+(15, '', '', 'tes@gmail.comte', '', 'ets', 'tes', '', 'user', 'N'),
+(16, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(17, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(18, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(19, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(20, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(21, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(22, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(23, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(24, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(25, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(26, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(27, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(28, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(29, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(30, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(31, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N'),
+(32, '', '', 'asd2@g', '', '1', 'asdasd', '', 'user', 'N');
 
 --
 -- Indexes for dumped tables
@@ -187,6 +296,12 @@ ALTER TABLE `tbl_relationship_category`
   ADD PRIMARY KEY (`relationship_id`);
 
 --
+-- Indexes for table `tbl_relationship_product`
+--
+ALTER TABLE `tbl_relationship_product`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_sub_category`
 --
 ALTER TABLE `tbl_sub_category`
@@ -212,7 +327,7 @@ ALTER TABLE `tbl_cart`
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_checkout`
@@ -224,25 +339,31 @@ ALTER TABLE `tbl_checkout`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_relationship_category`
 --
 ALTER TABLE `tbl_relationship_category`
-  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `tbl_relationship_product`
+--
+ALTER TABLE `tbl_relationship_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_sub_category`
 --
 ALTER TABLE `tbl_sub_category`
-  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
