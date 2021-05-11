@@ -9,6 +9,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body>
 	<?php $this->load->view('_partial_main/navbar'); ?>
+	<div aria-live="polite" aria-atomic="false" class="bg-dark position-relative bd-example-toasts">
+		<div class="toast position-absolute align-items-center top-0 start-50 translate-middle-x text-white"
+			style="background:#ca1515;width:50%;text-align: center;" role="alert" aria-live="assertive"
+			aria-atomic="false">
+			<div class="d-flex">
+				<div class="toast-body">
+
+				</div>
+				<button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+					aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
 	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
@@ -173,27 +186,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9">
-						<!-- Flexbox container for aligning the toasts -->
-						<div aria-live="polite" aria-atomic="true"
-							class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-
-							<!-- Then put toasts within -->
-							<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"
-								data-bs-delay="10000">
-								<div class="toast-header">
-									<img src="#" class="rounded mr-2" alt="#">
-									<strong class="mr-auto">Bootstrap</strong>
-									<small>11 mins ago</small>
-									<button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="toast-body">
-									Hello, world! This is a toast message.
-								</div>
-							</div>
-						</div>
 						<div class="row">
 							<?php if(isset($dataProduct)){
 								if(sizeof($dataProduct)!=0){
@@ -352,40 +344,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	</section>
 
 	<script type="text/javascript">
-		$('.favourite').click(function (e) {
-			e.preventDefault();
-			var product_id = $(this).attr('href');
-			$.ajax({
-				url: "<?php echo site_url('favourite/addWishlist'); ?>",
-				method: "POST",
-				data: {
-					product_id: product_id
-				},
-				context: this,
-				async: true,
-				dataType: 'text',
-				success: function (data) {
-					var html = '';
-					var i;
-					var datates = data.replace(/(<([^>]+)>)/ig, "").replace(/\r\n|\r|\n/g,
-						"<br />");
-					var datates2 = datates.replace(
-						"<br />if (!window.console) console = {};console.log = console.log || function(){};console.warn = console.warn || function(){};console.error = console.error || function(){};console.info = console.info || function(){};console.debug = console.debug || function(){};",
-						"");
-					$someArray = jQuery.parseJSON(datates2);
+		$(window).on('load', function () {
+			$('.toast').toast('hide');
+			$('.favourite').click(function (e) {
+				e.preventDefault();
+				var product_id = $(this).attr('href');
+				$.ajax({
+					url: "<?php echo site_url('favourite/addWishlist'); ?>",
+					method: "POST",
+					data: {
+						product_id: product_id
+					},
+					context: this,
+					async: true,
+					dataType: 'text',
+					success: function (data) {
+						var html = '';
+						var i;
+						var datates = data.replace(/(<([^>]+)>)/ig, "").replace(/\r\n|\r|\n/g,
+							"<br />");
+						var datates2 = datates.replace(
+							"<br />if (!window.console) console = {};console.log = console.log || function(){};console.warn = console.warn || function(){};console.error = console.error || function(){};console.info = console.info || function(){};console.debug = console.debug || function(){};",
+							"");
+						$someArray = jQuery.parseJSON(datates2);
 
-					if ($someArray == false) {
-						$(this).addClass('active');
-						var bootstrap_enabled = (typeof $().modal == 'function');
-						if (!bootstrap_enabled) {
-							setTimeout(function () {
-								$('.toast').toast('show');
-							}, 500);
+						if ($someArray == false) {
+							$(this).addClass('active');
+							$('.toast-body').html('Add to Wishlist')
+							$('.toast').toast('show');
+						} else {
+							$(this).removeClass('active');
+							$('.toast-body').html('Delete Wishlist')
+							$('.toast').toast('show');
 						}
-					} else {
-						$(this).removeClass('active');
 					}
-				}
+				});
 			});
 		});
 
