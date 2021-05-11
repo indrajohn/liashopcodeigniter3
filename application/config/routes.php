@@ -86,4 +86,6 @@ $route['contact-us'] = 'Home/contactUs';
 $route['cart'] = 'Home/shopCart';
 $route['checkout'] = 'Home/checkout';
 $route['favourite'] = 'Home/favourite';
+$route['favourite/addWishlist'] = 'Home/addWishlist';
+
 $route['product-details'] = 'Home/productDetails';

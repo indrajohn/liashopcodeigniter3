@@ -12,6 +12,37 @@
             var containerEl = document.querySelector('.property__gallery');
             var mixer = mixitup(containerEl);
         }
+        function convertRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+              split  = number_string.split(","),
+              sisa   = split[0].length % 3,
+              rupiah = split[0].substr(0, sisa),
+              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+           
+              if (ribuan) {
+                 var separator = sisa ? "." : "";
+                  rupiah += separator + ribuan.join(".");
+              }
+           
+              rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+              return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+          }
+          $('.product__price').each(function (i, obj) {
+			var price = $(this).html();
+			if (price.toLowerCase().indexOf("<span>") >= 0) {
+				price = $(this).html();
+				var priceArray = price.split("<span>");
+				var price1 = priceArray[0].trim();
+				var price2Array = priceArray[1].split("</span>");
+				var price2 = price2Array[0].trim();
+
+				price1 = convertRupiah(price1, "Rp. ");
+				price2 = convertRupiah(price2, "Rp. ");
+				$(this).html(price1 + "<span>" + price2 + "</span>");
+			} else {
+				$(this).html(convertRupiah(price, "Rp. "));
+			}
+		});
     });
     $('.search-switch').on('click', function () {
         $('.search-model').fadeIn(400);

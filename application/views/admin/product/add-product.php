@@ -151,6 +151,7 @@
 					data: {
 						id: id
 					},
+
 					async: true,
 					dataType: 'text',
 					success: function (data) {

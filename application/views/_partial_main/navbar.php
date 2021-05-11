@@ -33,6 +33,13 @@
                 if ($this->session->userdata('username') != null) {
                 ?>
 				<li class='nav-item'>
+					<a class='nav-link' href='favourite' style="padding: .6rem;"> <span class="icon_heart_alt"></span>
+					</a>
+				</li>
+				<li class='nav-item' style='cursor:default'>
+					<div class='nav-link' href=''> | </div>
+				</li>
+				<li class='nav-item'>
 					<a class='nav-link' href='cart' style="padding: .6rem;"> <i class='fas fa-shopping-cart'></i> </a>
 				</li>
 				<li class='nav-item' style='cursor:default'>

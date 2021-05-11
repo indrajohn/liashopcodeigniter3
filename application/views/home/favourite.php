@@ -2,169 +2,131 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <?php $this->load->view('_partial_main/header'); ?>
+<style>
+	td:nth-child(2) {
+		padding-right: 40px;
+	}
+
+</style>
 
 <body>
-    <?php $this->load->view('_partial_main/navbar'); ?>
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Home</a>
-                        <span>Shopping cart</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="shop-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shop__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="<?php echo base_url(); ?>assets/images/shopcart/cp-1.jpg" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Chain bucket bag</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 150.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 300.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="<?php echo base_url(); ?>assets/images/shopcart/cp-2.jpg" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Zip-pockets pebbled tote briefcase</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 170.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="<?php echo base_url(); ?>assets/images/shopcart/cp-3.jpg" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Black jean</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 85.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="<?php echo base_url(); ?>assets/images/shopcart/cp-4.jpg" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Cotton Shirt</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 55.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 110.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn">
-                        <a href="#">Continue Shopping</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-2">
-                    <div class="cart__total__procced">
-                        <h6>Cart total</h6>
-                        <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
-                        </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	<?php $this->load->view('_partial_main/navbar'); ?>
+	<div class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__links">
+						<a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Home</a>
+						<span>Favourite</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="shop-cart spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="shop__cart__table">
+						<table>
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Action</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php if(isset($dataFavourite)){
+									if(sizeof($dataFavourite) == 0){
+										echo "<tr><td>No Data</td></tr>";
+									}
+									else{
+									foreach($dataFavourite as $data){?>
+								<tr>
+									<td class="cart__product__item">
+										<img src="<?php echo base_url(); ?>upload/product/<?php echo $data['product_url'] ?>"
+											alt="" height=100 width=100>
+										<div class="cart__product__item__title">
+											<h6><?php echo $data['product_name'] ?></h6>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+										</div>
+									</td>
+									<td class="cart__price"><?php echo $data['product_price'] ?></td>
+									<td><button class="site-btn">Add to Cart</button></td>
+									<td><a href="<?php echo $data['product_id'];?>" class="cart__close"><span
+												class="icon_close"></span></a></td>
+								</tr>
+								<?php }}}else{?>
+								<tr>
+									<td>No Data</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		$('.cart__close').click(function (e) {
+			e.preventDefault();
+			var product_id = $(this).attr('href');
+			$.ajax({
+				url: "<?php echo site_url('favourite/addWishlist'); ?>",
+				method: "POST",
+				data: {
+					product_id: product_id
+				},
+				context: this,
+				async: true,
+				dataType: 'text',
+				success: function (data) {
+					var html = '';
+					var i;
+					var datates = data.replace(/(<([^>]+)>)/ig, "").replace(/\r\n|\r|\n/g,
+						"<br />");
+					var datates2 = datates.replace(
+						"<br />if (!window.console) console = {};console.log = console.log || function(){};console.warn = console.warn || function(){};console.error = console.error || function(){};console.info = console.info || function(){};console.debug = console.debug || function(){};",
+						"");
+					$someArray = jQuery.parseJSON(datates2);
+					if ($someArray == true) {
+						window.location.reload();
+					}
+				}
+			});
+		});
+		var price = $(".cart__price").html();
+		if (price != undefined) {
+			$(".cart__price").html(convertRupiah(price, "Rp. "));
+		}
+
+		function convertRupiah(angka, prefix) {
+			var number_string = angka.replace(/[^,\d]/g, "").toString(),
+				split = number_string.split(","),
+				sisa = split[0].length % 3,
+				rupiah = split[0].substr(0, sisa),
+				ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+			if (ribuan) {
+				var separator = sisa ? "." : "";
+				rupiah += separator + ribuan.join(".");
+			}
+
+			rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+			return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+		}
+
+	</script>
 
 
-    <?php $this->load->view('_partial_main/footer'); ?>
+	<?php $this->load->view('_partial_main/footer'); ?>

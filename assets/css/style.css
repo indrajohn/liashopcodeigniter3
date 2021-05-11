@@ -1110,7 +1110,6 @@ ol {
 .product__item__pic .label.sale {
 	background: #ca1515;
 }
-
 .product__hover {
 	position: absolute;
 	left: 0;
@@ -1159,6 +1158,14 @@ ol {
 	-webkit-transform: rotate(360deg);
 	-ms-transform: rotate(360deg);
 	transform: rotate(360deg);
+}
+.product__hover li a.active {
+	background: #ca1515;
+	color: #ffffff;
+	-webkit-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	transform: rotate(360deg);
+
 }
 
 .product__hover li a {

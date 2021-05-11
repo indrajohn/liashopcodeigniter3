@@ -27,7 +27,11 @@ class LoginController extends CI_Controller
 			redirect('admin/dashboard');
 		} else {
 			if ($this->isEmailConfirm() && $this->has_error == 'false') {
+				$dataUser = $this->User->getUserIdByUsername($this->user);
+				$user_id = $dataUser->user_id;
+
 				$newdata = array(
+					'user_id' => $user_id,
 					'username'  => $this->user,
 					'email'     => $email,
 					'logged_in' => TRUE

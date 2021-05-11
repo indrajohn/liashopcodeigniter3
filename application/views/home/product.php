@@ -2,6 +2,10 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <?php $this->load->view('_partial_main/header'); ?>
+<style>
+
+
+</style>
 
 <body>
 	<?php $this->load->view('_partial_main/navbar'); ?>
@@ -169,10 +173,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9">
+						<!-- Flexbox container for aligning the toasts -->
+						<div aria-live="polite" aria-atomic="true"
+							class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+							<!-- Then put toasts within -->
+							<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+								data-bs-delay="10000">
+								<div class="toast-header">
+									<img src="#" class="rounded mr-2" alt="#">
+									<strong class="mr-auto">Bootstrap</strong>
+									<small>11 mins ago</small>
+									<button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="toast-body">
+									Hello, world! This is a toast message.
+								</div>
+							</div>
+						</div>
 						<div class="row">
 							<?php if(isset($dataProduct)){
 								if(sizeof($dataProduct)!=0){
                                  foreach($dataProduct as $dataProduct){?>
+
+
 							<div class="col-lg-4 col-md-6">
 								<?php if($dataProduct['product_discount'] > 0){?>
 								<div class="product__item sale">
@@ -199,7 +226,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 if ($this->session->userdata('username') != null) {
                                 ?>
 												<!-- is login -->
-												<li><a href="favourite"><span class="icon_heart_alt"></span></a></li>
+												<li><a href="<?php echo $dataProduct['product_id']?>"
+														class="favourite <?php if($dataProduct['isFavourite']) echo 'active'?>"><span
+															class="icon_heart_alt"></span></a>
+												</li>
+
 												<li><a href="cart"><span class="icon_bag_alt"></span></a></li>
 												<?php
                                 } else {
@@ -227,7 +258,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 													$productDiscount = $dataProduct['product_discount'];
 													$discount = ($productDiscount/100) * $productPrice;
 													$priceAfterDiscount = $productPrice - $discount;
-													echo "<div class='product__price'>".$priceAfterDiscount."
+													echo "<div class='product__price discount'>".$priceAfterDiscount."
 											<span>".$dataProduct['product_price']."
 											</span></div>";
 											?>
@@ -320,33 +351,43 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 	</section>
 
-	<script>
-		function convertRupiah(angka, prefix) {
-			var number_string = angka.replace(/[^,\d]/g, "").toString(),
-				split = number_string.split(","),
-				sisa = split[0].length % 3,
-				rupiah = split[0].substr(0, sisa),
-				ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+	<script type="text/javascript">
+		$('.favourite').click(function (e) {
+			e.preventDefault();
+			var product_id = $(this).attr('href');
+			$.ajax({
+				url: "<?php echo site_url('favourite/addWishlist'); ?>",
+				method: "POST",
+				data: {
+					product_id: product_id
+				},
+				context: this,
+				async: true,
+				dataType: 'text',
+				success: function (data) {
+					var html = '';
+					var i;
+					var datates = data.replace(/(<([^>]+)>)/ig, "").replace(/\r\n|\r|\n/g,
+						"<br />");
+					var datates2 = datates.replace(
+						"<br />if (!window.console) console = {};console.log = console.log || function(){};console.warn = console.warn || function(){};console.error = console.error || function(){};console.info = console.info || function(){};console.debug = console.debug || function(){};",
+						"");
+					$someArray = jQuery.parseJSON(datates2);
 
-			if (ribuan) {
-				var separator = sisa ? "." : "";
-				rupiah += separator + ribuan.join(".");
-			}
-
-			rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-			return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
-		}
-		var price = $(".product__price").html();
-		if (price != undefined) {
-			var priceArray = price.split("<span>");
-			var price1 = priceArray[0].trim();
-			var price2Array = priceArray[1].split("</span>");
-			var price2 = price2Array[0].trim();
-
-			price1 = convertRupiah(price1, "Rp. ");
-			price2 = convertRupiah(price2, "Rp. ");
-			$(".product__price").html(price1 + "<span>" + price2 + "</span>");
-		}
+					if ($someArray == false) {
+						$(this).addClass('active');
+						var bootstrap_enabled = (typeof $().modal == 'function');
+						if (!bootstrap_enabled) {
+							setTimeout(function () {
+								$('.toast').toast('show');
+							}, 500);
+						}
+					} else {
+						$(this).removeClass('active');
+					}
+				}
+			});
+		});
 
 	</script>
 
